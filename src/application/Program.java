@@ -14,9 +14,9 @@ public class Program {
 		
 		Patrimonio pat = new Patrimonio (83, "Positivo", "Positivo", "ABNT-2", 1, obj);
 		
-		Local local = new Local(5, "Cozinha");
+		Local local = new Local(10, "Guichê 1");
 		
-		Localizacao localizacao = new Localizacao("08/07/2020", pat, local);
+		Localizacao localizacao = new Localizacao("07/07/2020", pat, local);
 		
 		Movimentacao movimentacao = new Movimentacao(pat, "07/07/2020", 1, "08/07/2020");
 		
