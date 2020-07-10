@@ -12,7 +12,7 @@ public class Program {
 		
 		Equipamento obj = new Equipamento(20,"Teclado");
 		
-		Patrimonio pat = new Patrimonio (83, "Positivo", "Positivo", "ABNT-2", 1, obj);
+		Patrimonio pat = new Patrimonio (83181, "Positivo", "Positivo", "ABNT-2", (byte) 1, obj);
 		
 		Local local = new Local(10, "Guichê 1");
 		

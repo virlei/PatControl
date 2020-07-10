@@ -6,32 +6,32 @@ public class Patrimonio implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private Integer numero;
+	private long numero;
 	private String fabricante;
 	private String marca;
 	private String descricao;
-	private Integer condicaoUso;
+	private byte condicaoUso;
 	
 	private Equipamento TipEquip;
 	
 	public Patrimonio() {
 	}
 
-	public Patrimonio(Integer numero, String fabricante, String marca, String descricao, Integer condicaoUso,
+	public Patrimonio(long numero, String fabricante, String marca, String descricao, byte i,
 			Equipamento tipEquip) {
 		this.numero = numero;
 		this.fabricante = fabricante;
 		this.marca = marca;
 		this.descricao = descricao;
-		this.condicaoUso = condicaoUso;
+		this.condicaoUso = i;
 		TipEquip = tipEquip;
 	}
 
-	public Integer getNumero() {
+	public long getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(long numero) {
 		this.numero = numero;
 	}
 
@@ -59,11 +59,11 @@ public class Patrimonio implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Integer getCondicaoUso() {
+	public byte getCondicaoUso() {
 		return condicaoUso;
 	}
 
-	public void setCondicaoUso(Integer condicaoUso) {
+	public void setCondicaoUso(byte condicaoUso) {
 		this.condicaoUso = condicaoUso;
 	}
 
@@ -75,11 +75,12 @@ public class Patrimonio implements Serializable {
 		TipEquip = tipEquip;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + (int) (numero ^ (numero >>> 32));
 		return result;
 	}
 
@@ -92,10 +93,7 @@ public class Patrimonio implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Patrimonio other = (Patrimonio) obj;
-		if (numero == null) {
-			if (other.numero != null)
-				return false;
-		} else if (!numero.equals(other.numero))
+		if (numero != other.numero)
 			return false;
 		return true;
 	}
