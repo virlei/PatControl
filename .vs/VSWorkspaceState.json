@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\application",
     "\\src\\model",
+    "\\src\\model\\dao",
     "\\src\\model\\entities"
   ],
-  "SelectedNode": "\\src\\application\\Program.java",
+  "SelectedNode": "\\src\\model\\dao\\DaoFactory.java",
   "PreviewInSolutionExplorer": false
 }
