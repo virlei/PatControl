@@ -52,18 +52,8 @@ public class PatrimonioDaoJDBC implements PatrimonioDao {
 			st.setLong(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
-				
-				Equipamento equip = new Equipamento();
-				equip.setId(rs.getInt("FK_Equipamento"));
-				equip.setDescricao(rs.getString("Equip"));
-				
-				Patrimonio pat = new Patrimonio();
-				pat.setNumero(rs.getLong("PK_Patrimonio"));
-				pat.setMarca(rs.getString("TXT_Marca"));
-				pat.setFabricante(rs.getString("TXT_Fabricante"));
-				pat.setDescricao(rs.getString("TXT_Descricao"));
-				pat.setCondicaoUso(rs.getByte("INT_condicaoUso"));
-				pat.setTipEquip(equip);
+				Equipamento equip = instantiateEquipamento(rs);
+				Patrimonio pat = instantiatePatrimonio(rs, equip); 
 				return pat;				
 			} 
 			return null;					
@@ -76,6 +66,26 @@ public class PatrimonioDaoJDBC implements PatrimonioDao {
 			DB.closeResultSet(rs);
 		}
 	
+	}
+
+	private Patrimonio instantiatePatrimonio(ResultSet rs, Equipamento equip) throws SQLException {
+		
+		Patrimonio pat = new Patrimonio();
+		pat.setNumero(rs.getLong("PK_Patrimonio"));
+		pat.setMarca(rs.getString("TXT_Marca"));
+		pat.setFabricante(rs.getString("TXT_Fabricante"));
+		pat.setDescricao(rs.getString("TXT_Descricao"));
+		pat.setCondicaoUso(rs.getByte("INT_condicaoUso"));
+		pat.setTipEquip(equip);
+		return pat;
+	}
+
+	private Equipamento instantiateEquipamento(ResultSet rs) throws SQLException {
+
+		Equipamento equip = new Equipamento();
+		equip.setId(rs.getInt("FK_Equipamento"));
+		equip.setDescricao(rs.getString("Equip"));
+		return equip;
 	}
 
 	@Override

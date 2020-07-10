@@ -25,8 +25,8 @@ public class Program {
 
 		PatrimonioDao patrimonioDao = DaoFactory.createPatrimonioDao();
 		
+		System.out.println("=== TESTE Nº 1: patrimonio findById ===");
 		Patrimonio pat = patrimonioDao.findById(83181);
-		
 		System.out.println(pat);		
 	}
 
