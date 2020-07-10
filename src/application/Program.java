@@ -1,5 +1,7 @@
 package application;
 
+import model.dao.DaoFactory;
+import model.dao.PatrimonioDao;
 import model.entities.Equipamento;
 import model.entities.Local;
 import model.entities.Localizacao;
@@ -19,6 +21,8 @@ public class Program {
 		Localizacao localizacao = new Localizacao("07/07/2020", pat, local);
 		
 		Movimentacao movimentacao = new Movimentacao(pat, "07/07/2020", 1, "08/07/2020");
+		
+		PatrimonioDao patrimonioDao = DaoFactory.createPatrimonioDao();
 		
 		System.out.println(pat);
 		System.out.println(local);
