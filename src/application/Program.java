@@ -2,17 +2,13 @@ package application;
 
 import model.dao.DaoFactory;
 import model.dao.PatrimonioDao;
-import model.entities.Equipamento;
-import model.entities.Local;
-import model.entities.Localizacao;
-import model.entities.Movimentacao;
 import model.entities.Patrimonio;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-		Equipamento obj = new Equipamento(20,"Teclado");
+/*		Equipamento obj = new Equipamento(20,"Teclado");
 		
 		Patrimonio pat = new Patrimonio (83181, "Positivo", "Positivo", "ABNT-2", (byte) 1, obj);
 		
@@ -21,13 +17,17 @@ public class Program {
 		Localizacao localizacao = new Localizacao("07/07/2020", pat, local);
 		
 		Movimentacao movimentacao = new Movimentacao(pat, "07/07/2020", 1, "08/07/2020");
-		
-		PatrimonioDao patrimonioDao = DaoFactory.createPatrimonioDao();
-		
+
 		System.out.println(pat);
 		System.out.println(local);
 		System.out.println(localizacao);
-		System.out.println(movimentacao);
+		System.out.println(movimentacao); */
+
+		PatrimonioDao patrimonioDao = DaoFactory.createPatrimonioDao();
+		
+		Patrimonio pat = patrimonioDao.findById(83181);
+		
+		System.out.println(pat);		
 	}
 
 }
