@@ -38,6 +38,7 @@ public class Program {
 			System.out.println(obj);
 		}
 		
+		
 		System.out.println("\n=== TESTE Nº 3: Patrimonio insert ===");
 		Equipamento obj = new Equipamento(7,null);
 		Patrimonio NovoPatr = new Patrimonio(201789, "Giroflex", "Candall 64", "com descanço de braço", (byte) 1, obj );
@@ -49,6 +50,13 @@ public class Program {
 		pat.getTipEquip().setId(9);
 		patrimonioDao.update(pat);
 		System.out.println("Patrimônio alterado");
+		
+
+		System.out.println("\n=== TESTE Nº 5: Patrimonio delete ===");
+		patrimonioDao.deleteById(201789);
+		System.out.println("Patrimônio deletado");
+
+		
 	}
 
 }

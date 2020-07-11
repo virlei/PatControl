@@ -85,8 +85,19 @@ public class PatrimonioDaoJDBC implements PatrimonioDao {
 
 	@Override
 	public void deleteById(long id) {
-		// TODO Auto-generated method stub
-		
+			
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement("DELETE FROM TB_Patrimonio WHERE PK_patrimonio = ?");
+			st.setLong(1, id);
+			st.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException (e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
