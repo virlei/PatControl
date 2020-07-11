@@ -28,22 +28,27 @@ public class Program {
 
 		PatrimonioDao patrimonioDao = DaoFactory.createPatrimonioDao();
 		
-		System.out.println("=== TESTE Nº 1: patrimonio findById ===");
+		System.out.println("=== TESTE Nº 1: Patrimonio findById ===");
 		Patrimonio pat = patrimonioDao.findById(83181);
 		System.out.println(pat);
 		
-		System.out.println("\n=== TESTE Nº 2: patrimonio findAll ===");
+		System.out.println("\n=== TESTE Nº 2: Patrimonio findAll ===");
 		List<Patrimonio> list = patrimonioDao.findAll();
 		for (Patrimonio obj: list) {
 			System.out.println(obj);
 		}
 		
-		System.out.println("\n=== TESTE Nº 3: patrimonio insert ===");
-		Equipamento obj = new Equipamento(4,null);
-		Patrimonio NovoPatr = new Patrimonio(252444, "Canon", "XP 3150", "Para biometria", (byte) 1, obj );
+		System.out.println("\n=== TESTE Nº 3: Patrimonio insert ===");
+		Equipamento obj = new Equipamento(7,null);
+		Patrimonio NovoPatr = new Patrimonio(201789, "Giroflex", "Candall 64", "com descanço de braço", (byte) 1, obj );
 		patrimonioDao.insert(NovoPatr);
+		System.out.println("Inserido novo Patrimônio");
 		
-		
+		System.out.println("\n=== TESTE Nº 4: Patrimonio update ===");
+		pat = patrimonioDao.findById(201789);
+		pat.getTipEquip().setId(9);
+		patrimonioDao.update(pat);
+		System.out.println("Patrimônio alterado");
 	}
 
 }

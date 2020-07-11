@@ -56,8 +56,31 @@ public class PatrimonioDaoJDBC implements PatrimonioDao {
 
 	@Override
 	public void update(Patrimonio obj) {
-		// TODO Auto-generated method stub
 		
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(
+					"UPDATE TB_PATRIMONIO "
+					+ "SET fk_equipamento=?, txt_fabricante=?, txt_marca=?, txt_descricao=?, int_condicaoUso=? "
+					+ "WHERE PK_patrimonio = ?");
+			
+			//st.setLong(1, obj.getNumero());
+			st.setInt(1, obj.getTipEquip().getId());
+			st.setString(2, obj.getFabricante());
+			st.setString(3, obj.getMarca());
+			st.setString(4, obj.getDescricao());
+			st.setInt(5, obj.getCondicaoUso());
+			st.setLong(6, obj.getNumero());
+			
+			st.executeUpdate();
+			
+		}
+		catch (SQLException e) {
+			throw new DbException (e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
