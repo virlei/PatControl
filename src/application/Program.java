@@ -1,5 +1,7 @@
 package application;
 
+import java.util.List;
+
 import model.dao.DaoFactory;
 import model.dao.PatrimonioDao;
 import model.entities.Patrimonio;
@@ -27,7 +29,13 @@ public class Program {
 		
 		System.out.println("=== TESTE Nº 1: patrimonio findById ===");
 		Patrimonio pat = patrimonioDao.findById(83181);
-		System.out.println(pat);		
+		System.out.println(pat);
+		
+		System.out.println("\n=== TESTE Nº 2: patrimonio findAll ===");
+		List<Patrimonio> list = patrimonioDao.findAll();
+		for (Patrimonio obj: list) {
+			System.out.println(obj);
+		}
 	}
 
 }

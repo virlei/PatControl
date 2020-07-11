@@ -64,10 +64,4 @@ public class Local implements Serializable{
 		return "Local [local=" + local + ", descricao=" + descricao + "]";
 	}
 
-	
-
-
-	
-	
-
 }
