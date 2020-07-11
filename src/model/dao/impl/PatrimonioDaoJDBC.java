@@ -25,7 +25,32 @@ public class PatrimonioDaoJDBC implements PatrimonioDao {
 	
 	@Override
 	public void insert(Patrimonio obj) {
-		// TODO Auto-generated method stub
+		
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(
+					"INSERT INTO TB_PATRIMONIO "
+					+ "(pk_patrimonio, fk_equipamento, txt_fabricante, txt_marca, txt_descricao, int_condicaoUso) "
+					+ "VALUES (?, ?, ?, ?, ?, ?)");
+			st.setLong(1, obj.getNumero());
+			st.setInt(2, obj.getTipEquip().getId());
+			st.setString(3, obj.getFabricante());
+			st.setString(4, obj.getMarca());
+			st.setString(5, obj.getDescricao());
+			st.setInt(6, obj.getCondicaoUso());
+			
+			int rowsAffected = st.executeUpdate();
+			
+			if (rowsAffected == 0) {
+				throw new DbException("Erro inexperado! Nenhuma linha foi inserida!");
+			}
+		}
+		catch (SQLException e) {
+			throw new DbException (e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 

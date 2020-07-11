@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.PatrimonioDao;
+import model.entities.Equipamento;
 import model.entities.Patrimonio;
 
 public class Program {
@@ -36,6 +37,13 @@ public class Program {
 		for (Patrimonio obj: list) {
 			System.out.println(obj);
 		}
+		
+		System.out.println("\n=== TESTE Nº 3: patrimonio insert ===");
+		Equipamento obj = new Equipamento(4,null);
+		Patrimonio NovoPatr = new Patrimonio(252444, "Canon", "XP 3150", "Para biometria", (byte) 1, obj );
+		patrimonioDao.insert(NovoPatr);
+		
+		
 	}
 
 }
